@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { connect } from 'react-redux'
 
 
 class App extends Component {
     render() {
+        console.log('props', this.props)
     return (
         <div>
             Hello World
@@ -13,4 +14,16 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps (calendar) {
+    const dayOrder = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday']
+
+
+
+    return {
+        calendar: dayOrder.map( day => ({
+            day,
+        }))
+    }
+}
+
+export default connect(mapStateToProps)(App)
